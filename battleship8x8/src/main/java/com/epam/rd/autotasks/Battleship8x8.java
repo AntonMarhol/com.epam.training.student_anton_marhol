@@ -35,24 +35,24 @@ public class Battleship8x8 {
         char[] mapShips;
         char[] mapShots;
 
-        String mS = Long.toBinaryString(ships);
-        while (mS.length() < 64) {
-            mS = 0 + mS;
+        String stringOfSips = Long.toBinaryString(ships);
+        while (stringOfSips.length() < 64) {
+            stringOfSips = 0 + stringOfSips;
         }
-        String mSho = Long.toBinaryString(shots);
-        while (mSho.length() < 64) {
-            mSho = 0 + mSho;
+        String stringOfShots = Long.toBinaryString(shots);
+        while (stringOfShots.length() < 64) {
+            stringOfShots = 0 + stringOfShots;
         }
 
-        mapShips = mS.toCharArray();
-        mapShots = mSho.toCharArray();
+        mapShips = stringOfSips.toCharArray();
+        mapShots = stringOfShots.toCharArray();
 
         if (mapShots[punch] == 49) mapShots[punch] = 48;
         else mapShots[punch] = 49;
 
-        mSho = String.valueOf(mapShots);
+        stringOfShots = String.valueOf(mapShots);
 
-        shots = Long.parseUnsignedLong(mSho, 2);
+        shots = Long.parseUnsignedLong(stringOfShots, 2);
 
         if (mapShips[punch] == 49) return true;
         else return false;
@@ -61,18 +61,18 @@ public class Battleship8x8 {
 
     public String state() {
 
-        String map = toMap(shots);
+        String stringOfMap = toMap(shots);
 
         String out = "";
 
-        String a = map.substring(0, 8) + "\n";
-        String b = map.substring(8, 16) + "\n";
-        String c = map.substring(16, 24) + "\n";
-        String d = map.substring(24, 32) + "\n";
-        String e = map.substring(32, 40) + "\n";
-        String f = map.substring(40, 48) + "\n";
-        String g = map.substring(48, 56) + "\n";
-        String h = map.substring(56, 64) + "\n";
+        String a = stringOfMap.substring(0, 8) + "\n";
+        String b = stringOfMap.substring(8, 16) + "\n";
+        String c = stringOfMap.substring(16, 24) + "\n";
+        String d = stringOfMap.substring(24, 32) + "\n";
+        String e = stringOfMap.substring(32, 40) + "\n";
+        String f = stringOfMap.substring(40, 48) + "\n";
+        String g = stringOfMap.substring(48, 56) + "\n";
+        String h = stringOfMap.substring(56, 64) + "\n";
 
         out = (a.toString() + b.toString() + c.toString() + d.toString()  + e.toString() + f.toString() + g.toString() + h.toString());
 
@@ -82,31 +82,31 @@ public class Battleship8x8 {
 
     }
 
-    public String toMap(Long to){
-        char[] mapArr;
-        char[] mapAS;
+    public String toMap(Long longOfMap){
+        char[] arrayOfShots;
+        char[] arrayOfShips;
 
-        String mapSO = Long.toBinaryString(to);
-        while (mapSO.length() < 64) {
-            mapSO = 0 + mapSO;
+        String mapOfShots = Long.toBinaryString(longOfMap);
+        while (mapOfShots.length() < 64) {
+            mapOfShots = 0 + mapOfShots;
         }
-        mapArr = mapSO.toCharArray();
+        arrayOfShots = mapOfShots.toCharArray();
 
-        String mapSH = Long.toBinaryString(ships);
-        while (mapSH.length() < 64) {
-            mapSH = 0 + mapSH;
+        String mapOfShips = Long.toBinaryString(ships);
+        while (mapOfShips.length() < 64) {
+            mapOfShips = 0 + mapOfShips;
         }
-        mapAS = mapSH.toCharArray();
+        arrayOfShips = mapOfShips.toCharArray();
 
-        for (int i = 0; i < mapArr.length; i++) {
-            if (mapArr[i] == 48 && mapAS[i] == 49) mapArr[i] = 9746;
-            if (mapArr[i] == 49 && mapAS[i] == 49) mapArr[i] = 9744;
-            if (mapArr[i] == 49 && mapAS[i] == 48) mapArr[i] = 215;
-            if (mapArr[i] == 48 && mapAS[i] == 48) mapArr[i] = 46;
+        for (int i = 0; i < arrayOfShots.length; i++) {
+            if (arrayOfShots[i] == 48 && arrayOfShips[i] == 49) arrayOfShots[i] = 9746;
+            if (arrayOfShots[i] == 49 && arrayOfShips[i] == 49) arrayOfShots[i] = 9744;
+            if (arrayOfShots[i] == 49 && arrayOfShips[i] == 48) arrayOfShots[i] = 215;
+            if (arrayOfShots[i] == 48 && arrayOfShips[i] == 48) arrayOfShots[i] = 46;
         }
 
-        mapSO = String.valueOf(mapArr);
+        mapOfShots = String.valueOf(arrayOfShots);
 
-        return mapSO;
+        return mapOfShots;
     }
 }

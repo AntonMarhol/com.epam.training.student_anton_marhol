@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="battleship-8x8" />
+        <module name="battleship8x8" />
       </profile>
     </annotationProcessing>
   </component>
