@@ -16,43 +16,31 @@ public class Battleship8x8 {
 
         if (shot == null) throw new UnsupportedOperationException();
 
-        String letter = shot.substring(0,1);
-        String munder = shot.substring(1);
-        int y = Integer.valueOf(munder)-1;
+        char letter = shot.charAt(0);
+        int y = Integer.valueOf(shot.substring(1))-1;
         int x;
+        int punch;
 
-        if (letter.equals("A")) x = 0;
-        else if (letter.equals("B")) x = 1;
-        else if (letter.equals("C")) x = 2;
-        else if (letter.equals("D")) x = 3;
-        else if (letter.equals("E")) x = 4;
-        else if (letter.equals("F")) x = 5;
-        else if (letter.equals("G")) x = 6;
-        else  x = 7;
-
-        int punch = y * 8 + x;
-
-        char[] mapShips;
-        char[] mapShots;
-
-        String mS = Long.toBinaryString(ships);
-        while (mS.length() < 64) {
-            mS = 0 + mS;
-        }
-        String mSho = Long.toBinaryString(shots);
-        while (mSho.length() < 64) {
-            mSho = 0 + mSho;
+        switch (letter){
+            case 'A': x = 0; break;
+            case 'B': x = 1; break;
+            case 'C': x = 2; break;
+            case 'D': x = 3; break;
+            case 'E': x = 4; break;
+            case 'F': x = 5; break;
+            case 'G': x = 6; break;
+            default: x = 7;
         }
 
-        mapShips = mS.toCharArray();
-        mapShots = mSho.toCharArray();
+        punch = y * 8 + x;
+
+        char[] mapShips = toArray(ships);
+        char[] mapShots = toArray(shots);
 
         if (mapShots[punch] == 49) mapShots[punch] = 48;
         else mapShots[punch] = 49;
 
-        mSho = String.valueOf(mapShots);
-
-        shots = Long.parseUnsignedLong(mSho, 2);
+        shots = Long.parseUnsignedLong(String.valueOf(mapShots), 2);
 
         if (mapShips[punch] == 49) return true;
         else return false;
@@ -61,20 +49,16 @@ public class Battleship8x8 {
 
     public String state() {
 
-        String map = toMap(shots);
+        String stringOfMap = toMap(shots);
 
-        String out = "";
-
-        String a = map.substring(0, 8) + "\n";
-        String b = map.substring(8, 16) + "\n";
-        String c = map.substring(16, 24) + "\n";
-        String d = map.substring(24, 32) + "\n";
-        String e = map.substring(32, 40) + "\n";
-        String f = map.substring(40, 48) + "\n";
-        String g = map.substring(48, 56) + "\n";
-        String h = map.substring(56, 64) + "\n";
-
-        out = (a.toString() + b.toString() + c.toString() + d.toString()  + e.toString() + f.toString() + g.toString() + h.toString());
+        String out = (stringOfMap.substring(0, 8) + "\n"
+                + stringOfMap.substring(8, 16) + "\n"
+                + stringOfMap.substring(16, 24) + "\n"
+                + stringOfMap.substring(24, 32) + "\n"
+                + stringOfMap.substring(32, 40) + "\n"
+                + stringOfMap.substring(40, 48) + "\n"
+                + stringOfMap.substring(48, 56) + "\n"
+                + stringOfMap.substring(56, 64) + "\n");
 
         if (out == null) throw new UnsupportedOperationException();
 
@@ -82,31 +66,27 @@ public class Battleship8x8 {
 
     }
 
-    public String toMap(Long to){
-        char[] mapArr;
-        char[] mapAS;
+    private String toMap(Long longOfMap){
+        char[] arrayOfShots = toArray(longOfMap);
+        char[] arrayOfShips = toArray(ships);
 
-        String mapSO = Long.toBinaryString(to);
-        while (mapSO.length() < 64) {
-            mapSO = 0 + mapSO;
-        }
-        mapArr = mapSO.toCharArray();
-
-        String mapSH = Long.toBinaryString(ships);
-        while (mapSH.length() < 64) {
-            mapSH = 0 + mapSH;
-        }
-        mapAS = mapSH.toCharArray();
-
-        for (int i = 0; i < mapArr.length; i++) {
-            if (mapArr[i] == 48 && mapAS[i] == 49) mapArr[i] = 9746;
-            if (mapArr[i] == 49 && mapAS[i] == 49) mapArr[i] = 9744;
-            if (mapArr[i] == 49 && mapAS[i] == 48) mapArr[i] = 215;
-            if (mapArr[i] == 48 && mapAS[i] == 48) mapArr[i] = 46;
+        for (int i = 0; i < arrayOfShots.length; i++) {
+            if (arrayOfShots[i] == 48 && arrayOfShips[i] == 49) arrayOfShots[i] = 9746;
+            if (arrayOfShots[i] == 49 && arrayOfShips[i] == 49) arrayOfShots[i] = 9744;
+            if (arrayOfShots[i] == 49 && arrayOfShips[i] == 48) arrayOfShots[i] = 215;
+            if (arrayOfShots[i] == 48 && arrayOfShips[i] == 48) arrayOfShots[i] = 46;
         }
 
-        mapSO = String.valueOf(mapArr);
-
-        return mapSO;
+        return String.valueOf(arrayOfShots);
     }
+
+    private char[] toArray(Long longOfField){
+
+        String mapOfShots = Long.toBinaryString(longOfField);
+        while (mapOfShots.length() < 64) {
+            mapOfShots = 0 + mapOfShots;
+        }
+        return  mapOfShots.toCharArray();
+    }
+
 }
