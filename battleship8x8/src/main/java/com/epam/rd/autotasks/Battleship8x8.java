@@ -44,7 +44,6 @@ public class Battleship8x8 {
 
         if (mapShips[punch] == 49) return true;
         else return false;
-
     }
 
     public String state() {
@@ -63,7 +62,6 @@ public class Battleship8x8 {
         if (out == null) throw new UnsupportedOperationException();
 
         return out;
-
     }
 
     private String toMap(Long longOfMap){
@@ -76,7 +74,6 @@ public class Battleship8x8 {
             if (arrayOfShots[i] == 49 && arrayOfShips[i] == 48) arrayOfShots[i] = 215;
             if (arrayOfShots[i] == 48 && arrayOfShips[i] == 48) arrayOfShots[i] = 46;
         }
-
         return String.valueOf(arrayOfShots);
     }
 
