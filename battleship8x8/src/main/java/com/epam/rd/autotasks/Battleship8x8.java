@@ -65,6 +65,7 @@ public class Battleship8x8 {
     }
 
     private String toMap(Long longOfMap){
+        
         char[] arrayOfShots = toArray(longOfMap);
         char[] arrayOfShips = toArray(ships);
 
