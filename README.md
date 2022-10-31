@@ -5,7 +5,7 @@
   </head>
   <body>
   <h1 align="center">Tasks</h1>
-  <h2 align="center">from each step of my EPAM's QA Automation with JAVA cource (Stage1)<h2>
+  <h2 align="center">from each step of my EPAM's Java Basics cource (Stage1)<h2>
   <dr>
   <dr>
   <dr>
