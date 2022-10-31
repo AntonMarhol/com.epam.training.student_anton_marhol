@@ -3,6 +3,9 @@
 <h3 align="left">
   <p>Write a program that:</p>
 <dr>
-<p>Gets login number-password.</p>
-<p>If it is a secret number, the program outputs: "Hello, Agent".</p>
-<p>Otherwise prints "Access denied."</p>
+<ul>
+<li>Gets login number-password.</li>
+<li>If it is a secret number, the program outputs: "Hello, Agent".</li>
+<li>Otherwise prints "Access denied."</li>
+</ul>
+</h3>
