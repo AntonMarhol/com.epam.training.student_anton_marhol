@@ -1,4 +1,4 @@
-<h1 align="center">Fourth task</h1>
+<h1 align="center">The fourth task</h1>
 
 <h3 align="left">
   <p>Write a program that:</p>
